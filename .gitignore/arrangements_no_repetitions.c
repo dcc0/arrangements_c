@@ -150,7 +150,7 @@ int main(int argc, char * argv[]) {
   int j = 0;
 	x = 0;
 
-  /*This var stops algorithm.
+  /*This var stops the algorithm.
    * Переменная останавливает алгоритм*/
   int break_2 = 0;
   int y = 0;
