@@ -18,8 +18,6 @@ int array_diff(int * c, int * b) {
   int j = 0;
   int z = 0;
   int p = 0;
-  int k = 0;
-
 
   /*Here we remove twins. Удаляем дубликаты*/
   z = 0;
@@ -56,15 +54,14 @@ int array_search(int bk, int * c) {
     /*Функция перестановок. Permutations function.*/
     int permute(int * arg) {
 
-		int argv[100]={0};
-
+	int argv[100]={0};
         int k = 0;
         int i = 0;
         int j = 0;
         int x = 0; //Хранит длину строки. Var to let know length of a string
         int c = 0; //Для обмена. Buffer
-		int reverse_argv[100] = {};
-		for (x=0; arg[x]; x++) argv[x]=arg[x];
+	int reverse_argv[100] = {};
+	for (x=0; arg[x]; x++) argv[x]=arg[x];
 
         /*Buble sort the array. Упорядочим алфавит*/
         for (x; argv[x]; x++);
@@ -78,9 +75,9 @@ int array_search(int bk, int * c) {
                 }
             }
         }
+	    
         /*Here we reverse an array to stop the alorithm later.
          *Перевернем массив, чтобы остановить его позже в цикле*/
-
         i = x - 1;
         while (k < x) {
             reverse_argv[k] = argv[i];
@@ -89,7 +86,6 @@ int array_search(int bk, int * c) {
         }
 
         /*Main part: here we permute. Порождаем перестановки*/
-
         while (1) {
 
             for (j = 0; argv[j] != 0; j++) printf("%d ", argv[j]);
@@ -101,6 +97,7 @@ int array_search(int bk, int * c) {
             }
 
             i = x - 2;
+		
             /*Here we search next. Ищем новую перестановку*/
             while (argv[i] >= argv[i + 1]) i--;
             j = x - 1;
@@ -143,8 +140,9 @@ int main(int argc, char * argv[]) {
 	int x = 0;
     int c[30]={0};
     int b[30]={0};
+	
+	/*Here we fill arrays b and c. Заполняем массивы с и b*/
 	for (x=0; x!=k; x++) b[x] = p++;
-
 	for (x=0; x!=n-k; x++) c[x] = p++;
 
   int more_per_unit = 0;
