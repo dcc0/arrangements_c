@@ -17,7 +17,7 @@ int array_diff(int * c, int * b) {
   int j = 0;
   int z = 0;
   int p = 0;
-  int k = 0;
+  
 
   /*Here we remove twins. Удаляем дубликаты*/
   z = 0;
@@ -121,10 +121,6 @@ int permute(int * arg) {
 }
 
 int main(int argc, char * argv[]) {
-  if (argc != 3) {
-    printf("Restart it with two arguments like 8 4\n");
-    return 0;
-  }
 
   /*Преобразуем аргументы в целые.
    * Here we convert arguments to integers*/
@@ -132,6 +128,11 @@ int main(int argc, char * argv[]) {
   if (n > 99) return 0;
   int k = atoi(argv[2]);
   if (k > 99) return 0;
+  
+  if (argc != 3) {
+    printf("Restart it with two arguments like 8 4\n");
+    return 0;
+  }
 
   if (k > n) {
     printf("First argument must be equal or greater\n");
@@ -142,6 +143,7 @@ int main(int argc, char * argv[]) {
   int x = 0;
   int c[40] = {0};
   int b[40] = {0};
+  
 	/*Here we fill arrays c and b. Заполним массивы с и b*/
   for (x = 0; x != k; x++) b[x] = 1;
   for (x = 0; x != n; x++) c[x] = p++;
@@ -151,7 +153,7 @@ int main(int argc, char * argv[]) {
   int j = 0;
   x = 0;
 
-  /*This var stops algorithm.
+  /*This var stops the algorithm.
    * Переменная останавливает алгоритм*/
   int break_2 = 0;
   int y = 0;
@@ -168,7 +170,7 @@ int main(int argc, char * argv[]) {
     more_per_unit = array_search(b[k - 1] + 1, c);
     if (more_per_unit != -1) {
 
-      /*Found. Change and print. Нашли.
+      /*Found. Here we transfer 1 and print . Нашли.
        * Транспортируем единицу и печатаем*/
       //c[more_per_unit] -= 1;
       b[k - 1] += 1;
