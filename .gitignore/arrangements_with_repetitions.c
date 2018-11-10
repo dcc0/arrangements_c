@@ -122,17 +122,18 @@ int permute(int * arg) {
 
 int main(int argc, char * argv[]) {
 
+  if (argc != 3) {
+    printf("Restart it with two arguments like 8 4\n");
+    return 0;
+  
+	  }
   /*Преобразуем аргументы в целые.
    * Here we convert arguments to integers*/
   int n = atoi(argv[1]);
   if (n > 99) return 0;
   int k = atoi(argv[2]);
   if (k > 99) return 0;
-  
-  if (argc != 3) {
-    printf("Restart it with two arguments like 8 4\n");
-    return 0;
-  }
+ 
 
   if (k > n) {
     printf("First argument must be equal or greater\n");
