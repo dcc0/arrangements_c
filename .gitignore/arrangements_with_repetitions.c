@@ -1,4 +1,4 @@
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
 
   /*В этой функции добавляем значение b в массив с.
@@ -17,7 +17,7 @@ int array_diff(int * c, int * b) {
   int j = 0;
   int z = 0;
   int p = 0;
-  
+
 
   /*Here we remove twins. Удаляем дубликаты*/
   z = 0;
@@ -76,7 +76,7 @@ int permute(int * arg) {
       }
     }
   }
-	
+
   /*Here we reverse an array to stop the alorithm later.
    *Перевернем массив, чтобы остановить его позже в цикле*/
   i = x - 1;
@@ -98,7 +98,7 @@ int permute(int * arg) {
     }
 
     i = x - 2;
-	  
+
     /*Here we search next. Ищем новую перестановку*/
     while (argv[i] >= argv[i + 1]) i--;
     j = x - 1;
@@ -109,7 +109,7 @@ int permute(int * arg) {
     argv[j] = argv[i];
     argv[i] = c;
     i++;
-	  
+
     /*Tail reverse. Оборачиваем хвост*/
     for (j = x - 1; j > i; i++, j--) {
       c = argv[i];
@@ -125,7 +125,7 @@ int main(int argc, char * argv[]) {
   if (argc != 3) {
     printf("Restart it with two arguments like 8 4\n");
     return 0;
-  
+
 	  }
   /*Преобразуем аргументы в целые.
    * Here we convert arguments to integers*/
@@ -133,18 +133,15 @@ int main(int argc, char * argv[]) {
   if (n > 99) return 0;
   int k = atoi(argv[2]);
   if (k > 99) return 0;
- 
 
-  if (k > n) {
-    printf("First argument must be equal or greater\n");
-    return 0;
-  }
+
+
 
   int p = 1;
   int x = 0;
-  int c[40] = {0};
-  int b[40] = {0};
-  
+  int c[100] = {0};
+  int b[100] = {0};
+
 	/*Here we fill arrays c and b. Заполним массивы с и b*/
   for (x = 0; x != k; x++) b[x] = 1;
   for (x = 0; x != n; x++) c[x] = p++;
