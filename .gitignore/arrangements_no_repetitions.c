@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*В этой функции добавляем значение b в массив с.
+  /*В этой функции добавляем значение b в массив с.
    * Here we add element b to  array c*/
   int array_unshift(int * c, int b) {
     int j = 0;
     for (j = 0; c[j] != 0; j++) c[j] = c[j];
     c[j] = b;
   }
-
 
 /*Вычисление расхождения в массивах.
  * Computes the difference of array */
@@ -18,6 +17,7 @@ int array_diff(int * c, int * b) {
   int j = 0;
   int z = 0;
   int p = 0;
+
 
   /*Here we remove twins. Удаляем дубликаты*/
   z = 0;
@@ -34,7 +34,6 @@ int array_diff(int * c, int * b) {
 
 }
 
-
 /*This function for searching an element in array C*/
 int array_search(int bk, int * c) {
 
@@ -50,105 +49,110 @@ int array_search(int bk, int * c) {
 
 }
 
+/*Функция перестановок. Permutations function.*/
+int permute(int * arg) {
 
-    /*Функция перестановок. Permutations function.*/
-    int permute(int * arg) {
+  int argv[100] = {
+    0
+  };
 
-	int argv[100]={0};
-        int k = 0;
-        int i = 0;
-        int j = 0;
-        int x = 0; //Хранит длину строки. Var to let know length of a string
-        int c = 0; //Для обмена. Buffer
-	int reverse_argv[100] = {};
-	for (x=0; arg[x]; x++) argv[x]=arg[x];
+  int k = 0;
+  int i = 0;
+  int j = 0;
+  int x = 0; //Хранит длину строки. Var to let know length of a string
+  int c = 0; //Для обмена. Buffer
+  int reverse_argv[100] = {};
+  for (x = 0; arg[x]; x++) argv[x] = arg[x];
 
-        /*Buble sort the array. Упорядочим алфавит*/
-        for (x; argv[x]; x++);
+  /*Buble sort the array. Упорядочим алфавит*/
+  for (x; argv[x]; x++);
 
-        for (i = 0; i < x; i++) {
-            for (j = x - 1; j > i; j--) {
-                if (argv[j - 1] > argv[j]) {
-                    c = argv[j - 1];
-                    argv[j - 1] = argv[j];
-                    argv[j] = c;
-                }
-            }
-        }
-	    
-        /*Here we reverse an array to stop the alorithm later.
-         *Перевернем массив, чтобы остановить его позже в цикле*/
-        i = x - 1;
-        while (k < x) {
-            reverse_argv[k] = argv[i];
-            i--;
-            k++;
-        }
-
-        /*Main part: here we permute. Порождаем перестановки*/
-        while (1) {
-
-            for (j = 0; argv[j] != 0; j++) printf("%d ", argv[j]);
-            printf("\n");
-
-            for (k = 0; k != x + 1; k++) {
-                if (reverse_argv[k] == argv[k] && argv[k] == 0) return 0;
-                if (reverse_argv[k] != argv[k]) break;
-            }
-
-            i = x - 2;
-		
-            /*Here we search next. Ищем новую перестановку*/
-            while (argv[i] >= argv[i + 1]) i--;
-            j = x - 1;
-            while (argv[j] <= argv[i]) j--;
-
-            /*Change. Обмен*/
-            c = argv[j];
-            argv[j] = argv[i];
-            argv[i] = c;
-            i++;
-            /*Tail reverse. Оборачиваем хвост*/
-            for (j = x - 1; j > i; i++, j--) {
-                c = argv[i];
-                argv[i] = argv[j];
-                argv[j] = c;
-            }
-
-        }
+  for (i = 0; i < x; i++) {
+    for (j = x - 1; j > i; j--) {
+      if (argv[j - 1] > argv[j]) {
+        c = argv[j - 1];
+        argv[j - 1] = argv[j];
+        argv[j] = c;
+      }
     }
+  }
+
+  /*Here we reverse an array to stop the alorithm later.
+   *Перевернем массив, чтобы остановить его позже в цикле*/
+  i = x - 1;
+  while (k < x) {
+    reverse_argv[k] = argv[i];
+    i--;
+    k++;
+  }
+
+  /*Main part: here we permute. Порождаем перестановки*/
+  while (1) {
+
+    for (j = 0; argv[j] != 0; j++) printf("%d ", argv[j]);
+    printf("\n");
+
+    for (k = 0; k != x + 1; k++) {
+      if (reverse_argv[k] == argv[k] && argv[k] == 0) return 0;
+      if (reverse_argv[k] != argv[k]) break;
+    }
+
+    i = x - 2;
+
+    /*Here we search next. Ищем новую перестановку*/
+    while (argv[i] >= argv[i + 1]) i--;
+    j = x - 1;
+    while (argv[j] <= argv[i]) j--;
+
+    /*Change. Обмен*/
+    c = argv[j];
+    argv[j] = argv[i];
+    argv[i] = c;
+    i++;
+
+    /*Tail reverse. Оборачиваем хвост*/
+    for (j = x - 1; j > i; i++, j--) {
+      c = argv[i];
+      argv[i] = argv[j];
+      argv[j] = c;
+    }
+
+  }
+}
 
 int main(int argc, char * argv[]) {
-	if (argc != 3) {
-        printf("Restart it with two arguments like 8 4\n");
-        return 0;
-    }
 
-    /*Преобразуем аргументы в целые.
-     * Here we convert arguments to integers*/
-    int n = atoi(argv[1]);
-    if (n > 99) return 0;
-	int k = atoi(argv[2]);
-    if (k > 99) return 0;
+  if (argc != 3) {
+    printf("Restart it with two arguments like 8 4\n");
+    return 0;
+	  }
 
-      if (k > n) {
-        printf("First argument must be equal or greater\n");
-        return 0;
-    }
+  /*Преобразуем аргументы в целые.
+   * Here we convert arguments to integers*/
+  int n = atoi(argv[1]);
+  if (n > 99) return 0;
+  int k = atoi(argv[2]);
+  if (k > 99) return 0;
 
-	int p = 1;
-	int x = 0;
-    int c[30]={0};
-    int b[30]={0};
-	
-	/*Here we fill arrays b and c. Заполняем массивы с и b*/
-	for (x=0; x!=k; x++) b[x] = p++;
-	for (x=0; x!=n-k; x++) c[x] = p++;
+  //Если к или n = 0
+  if (k <= 0 || n <= 0) {
+  printf ("1\n");
+  return 0;
+  }
+
+  int p = 1;
+  int x = 0;
+  int c[100] = {0};
+  int b[100] = {0};
+
+	/*Here we fill arrays c and b. Заполним массивы с и b*/
+  for (x = 0; x != k; x++) b[x] = 1;
+  for (x = 0; x != n; x++) c[x] = p++;
 
   int more_per_unit = 0;
   int i = 0;
   int j = 0;
-	x = 0;
+  x = 0;
 
   /*This var stops the algorithm.
    * Переменная останавливает алгоритм*/
@@ -159,7 +163,6 @@ int main(int argc, char * argv[]) {
   //for (x = 0; b[x] != 0; x++) printf("%d ", b[x]);
   //printf("\n");
   permute(b);
-
   while (1) {
 
     /*Here we search an element in array C greater than K in array B.
@@ -168,13 +171,13 @@ int main(int argc, char * argv[]) {
     more_per_unit = array_search(b[k - 1] + 1, c);
     if (more_per_unit != -1) {
 
-      /*Found. Change and print. Нашли.
+      /*Found. Here we transfer 1 and print . Нашли.
        * Транспортируем единицу и печатаем*/
-      c[more_per_unit] -= 1;
+      //c[more_per_unit] -= 1;
       b[k - 1] += 1;
       //for (x = 0; b[x] != 0; x++) printf("%d ", b[x]);
       //printf("\n");
-	permute(b);
+      permute(b);
     }
 
     /*Если последний элемент в массиве B равен n
@@ -189,7 +192,7 @@ int main(int argc, char * argv[]) {
 
         /*Here we emulate "break 2" expression for exit.
          * Эмулируем конструкцию break 2 для выхода*/
-        if (i == 0 && b[i] == n - k + 1) {
+        if (i == 0 && b[i] == n) {
           break_2 = 1;
           break;
         }
@@ -203,11 +206,11 @@ int main(int argc, char * argv[]) {
 
           /*Перенос значений в С. Заполнение  массива B до K*.
            *Here we transport elements to C and fill array B till K.*/
-          y = i;
-          while (y != k - 1) {
-            array_unshift(c, b[y + 1]);
-            b[y + 1] = b[y] + 1;
-            y++;
+          for (j = i; j < k - 1; j++) {
+            /*Добавим элемент в начало массива C.
+            We add element to beginning of the array C*/
+            array_unshift(c, b[j + 1]);
+            b[j + 1] = b[i];
           }
 
           /*Удаление повторяющихся значений из C и печать.*
@@ -216,6 +219,9 @@ int main(int argc, char * argv[]) {
           //for (x = 0; b[x] != 0; x++) printf("%d ", b[x]);
           //printf("\n");
           permute(b);
+          /*Here we add n to the array C.
+           * Добавим n в массив С*/
+          array_unshift(c, n);
           break;
         }
         i--;
