@@ -1,3 +1,4 @@
+//Позволяет генерировать размещения при n > k и k > n
 #include <stdio.h>
 #include <stdlib.h>
 
